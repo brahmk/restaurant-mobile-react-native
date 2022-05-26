@@ -1,55 +1,19 @@
-import { StatusBar } from "expo-status-bar";
-import {
-  
-  Text,
-  View,
-  ActivityIndicator,
-  ImageBackground,
-  ScrollView,
-  Image,
+import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from './src/scenes/Home';
+import Details from './src/scenes/Details';
 
-} from "react-native";
-import { useEffect, useState } from "react";
-import RestaurantCard from "./src/components/RestaurantCard";
-import styles from './src/styles'
-
-const img = {
-  uri: "https://i.pinimg.com/originals/cc/1e/c6/cc1ec66bb88d96db9fdb9f5e11f11cd4.jpg",
-};
+const Stack = createNativeStackNavigator()
 
 export default function App() {
-  const [allRestaurants, setAllRestaurants] = useState();
-
-  useEffect(() => {
-    const getData = async () => {
-      const response = await fetch(
-        "https://my-first-firestore-bk.web.app/restaurants"
-      );
-      const data = await response.json();
-      setAllRestaurants(data);
-    };
-    getData();
-  }, []);
-
   return (
-   
-    <View style={styles.container}>
-     
-      {/* <ImageBackground style={styles.container} resizeMode="cover" source={img}> */}
-        <ScrollView>
-          {allRestaurants ? (
-            allRestaurants?.map((restaurant) => (
-          <RestaurantCard key = {restaurant.id} restaurant = {restaurant} />
-            ))
-          ) : <ActivityIndicator size="large" color="pink" />
-          }
-
-          <StatusBar style="auto" />
-        </ScrollView>
-      {/* </ImageBackground> */}
- 
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Home'>
+        <Stack.Screen name="Home" component={Home} options={{title:'Local Restaurants'}} />
+        <Stack.Screen name="Details" component={Details}/>
+      </Stack.Navigator>
+      <StatusBar style="auto" />
+    </NavigationContainer>
   );
 }
-
-

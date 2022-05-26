@@ -5,7 +5,7 @@ export default StyleSheet.create({
     container: {
       flex: 1,
       width: "100%",
-      backgroundColor: "grey",
+      backgroundColor: "white",
       alignItems: "center",
       justifyContent: "center",
       marginVertical: 10
@@ -16,7 +16,7 @@ export default StyleSheet.create({
       fontSize: 24,
       fontWeight:'600',
       marginVertical: 15,
-      backgroundColor: "white",
+      backgroundColor: "#F8F0E3",
     },
   
     image: {
@@ -27,7 +27,7 @@ export default StyleSheet.create({
 
     restaurantCard: {
         width: '100%',
-        backgroundColor:'#fff',
+        backgroundColor:'#F8F0E3',
         color:'#444',
         marginVertical: 8,
         borderRadius: 9,
