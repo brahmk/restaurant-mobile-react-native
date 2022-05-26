@@ -7,8 +7,10 @@ import {
   ImageBackground,
   ScrollView,
   Image,
+
 } from "react-native";
 import { useEffect, useState } from "react";
+import RestaurantCard from "./src/components/RestaurantCard";
 import styles from './src/styles'
 
 const img = {
@@ -30,27 +32,22 @@ export default function App() {
   }, []);
 
   return (
+   
     <View style={styles.container}>
-      <ImageBackground style={styles.container} resizeMode="cover" source={img}>
+     
+      {/* <ImageBackground style={styles.container} resizeMode="cover" source={img}> */}
         <ScrollView>
           {allRestaurants ? (
             allRestaurants?.map((restaurant) => (
-              <>
-                <Text style={styles.text} key={restaurant.id}>
-                  {restaurant.name}{" "}
-                </Text>
-                <Image
-                  source={{ uri: restaurant.image }}
-                  style={styles.image}
-                />
-              </>
+          <RestaurantCard key = {restaurant.id} restaurant = {restaurant} />
             ))
           ) : <ActivityIndicator size="large" color="pink" />
           }
 
           <StatusBar style="auto" />
         </ScrollView>
-      </ImageBackground>
+      {/* </ImageBackground> */}
+ 
     </View>
   );
 }
