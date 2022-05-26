@@ -31,6 +31,8 @@ export default StyleSheet.create({
         color:'#444',
         marginVertical: 8,
         borderRadius: 9,
+        borderColor: 'black',
+        
        
         
     },
